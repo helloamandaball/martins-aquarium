@@ -1,31 +1,42 @@
 /**
  *   FishList which renders individual fish objects as HTML
  */
- import { useFish } from "./FishDataProvider.js"
+ import { useFish, mostHolyFish, soldierFish, nonHolyFish } from "./FishDataProvider.js"
  import { Fish } from "./Fish.js"
- 
+//fishArray is the paramater
+ const buildHTML = (fishArray) => {
+    let fishHTMLRepresentations = ""
+    for (const singleFishObject of fishArray) {
+        fishHTMLRepresentations += Fish(singleFishObject)
+    }
+    return fishHTMLRepresentations
+ }
+
+
+ // the "=>" means fat arrow syntax
  export const FishList = () => {
- 
      const contentElement = document.querySelector("#FishList")
-     const fishes = useFish()
- 
-     // Generate all of the HTML for all of the fish (this is a loop)
-     let fishHTMLRepresentations = ""
-     for (const singleFishObject of fishes) {
-         /*
-             Invoke(aka: use) the Fish component function
-             and pass the current fish object as an argument: place in the parenthesis() after Fish.
-             Each time, add the return value to the
-             fishHTMLRepresentations variable with `+=`
-         */
-            fishHTMLRepresentations += Fish(singleFishObject)
-     }
+     
+     const mostHolyArray = mostHolyFish()
+     const soldierArray = soldierFish()
+     const normalArray = nonHolyFish()
+
+     const holyHTML = buildHTML(mostHolyArray)
+     const soldierHTML = buildHTML(soldierArray)
+     const normalHTML = buildHTML(normalArray)
  
      // Add a section, and all of the fish to the DOM
      contentElement.innerHTML += `
          <article class="fishList ">
-             ${fishHTMLRepresentations}
+            <h3>Most Holy</h3>
+                ${holyHTML}
+            <h3>Soldier Fish</h3>
+                ${soldierHTML}
+            <h3>RegularFish</h3>
+                ${normalHTML}
          </article>
      `
  }
+
+ 
  

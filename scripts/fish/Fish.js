@@ -6,7 +6,7 @@
  export const Fish = (fish) => {
     return `
         <section class="single-fish fish card ">
-            <div><img  class="fish__image image--card" src="${fish.image}" /></div>
+            <div><img class="fish__image image--card" src="${fish.image}" /></div>
             <div class="fish__name">Name: ${fish.name}</div>
             <div class="fish__species">Species: ${fish.species}</div>
             <div class="fish__length">Length: ${fish.length}</div>
@@ -17,7 +17,7 @@
 }
 
 
-////this code updated and moved to FishList.js:
+////>>>>>>> this code updated and moved to FishList.js: <<<<<<<<<////
 // /**
 //  *  FishList which renders individual fish objects as HTML
 //  */
